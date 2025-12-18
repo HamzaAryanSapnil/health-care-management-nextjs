@@ -1,28 +1,6 @@
 export interface HeroProps {
-  badge?: {
-    text: string;
-    icon?: React.ReactNode;
-  };
-  heading?: {
-    line1: string;
-    line2: string;
-  };
-  description?: string[];
-  buttons?: {
-    primary?: {
-      text: string;
-      onClick?: () => void;
-    };
-    secondary?: {
-      text: string;
-      onClick?: () => void;
-    };
-  };
-  stats?: Array<{
-    value: string;
-    label: string;
-    icon?: React.ReactNode;
-  }>;
+  heading?: string; // Main hero heading
+  description?: string; // Hero description text
   formCard?: {
     title: string;
     symptomLabel?: string;
@@ -34,4 +12,10 @@ export interface HeroProps {
     footerText?: string;
     onSubmit?: (data: { symptoms: string; specialty: string }) => void;
   };
+  services?: Array<{
+    title: string;
+    description: string;
+    imageUrl?: string;
+    icon?: React.ReactNode;
+  }>;
 }
