@@ -8,6 +8,7 @@ import NavbarAuthButtons from "./NavbarAuthButtons";
 
 const PublicNavbar = async () => {
   const navItems = [
+    { href: "/", label: "Home" },
     { href: "/consultation", label: "Consultation" },
     { href: "/health-plans", label: "Health Plans" },
     { href: "/medicine", label: "Medicine" },
