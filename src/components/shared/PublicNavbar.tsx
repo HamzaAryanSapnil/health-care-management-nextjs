@@ -13,6 +13,8 @@ const PublicNavbar = async () => {
     { href: "/medicine", label: "Medicine" },
     { href: "/diagnostics", label: "Diagnostics" },
     { href: "/ngos", label: "NGOs" },
+    { href: "/about-us", label: "About Us" },
+    { href: "/contact-us", label: "Contact Us" },
   ];
 
   const accessToken = await getCookie("accessToken");
