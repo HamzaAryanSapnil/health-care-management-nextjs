@@ -14,6 +14,10 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import samplePhoto from "../../../assets/images/hero-doctor.jpg";
+import samplePhoto2 from "../../../assets/images/doctor-checking.jpg";
+import samplePhoto3 from "../../../assets/images/ai-suggestions.jpg";
+import samplePhoto4 from "../../../assets/images/customer-service.jpg";
+import samplePhoto5 from "../../../assets/images/payment.jpg";
 
 const testimonials = [
   {
@@ -27,7 +31,7 @@ const testimonials = [
   {
     name: "Jane Cooper",
     role: "Patient",
-    image: samplePhoto,
+    image: samplePhoto2,
     quote:
       "A seamless experience from booking an appointment to the consultation. The use of technology for prescriptions and follow-ups is very convenient.",
     rating: 5,
@@ -35,7 +39,7 @@ const testimonials = [
   {
     name: "Wade Warren",
     role: "Patient",
-    image: samplePhoto,
+    image: samplePhoto3,
     quote:
       "I highly recommend their services. The specialists are top-notch, and they truly focus on preventive care which has greatly improved my health.",
     rating: 5,
@@ -43,7 +47,7 @@ const testimonials = [
   {
     name: "Sarah Johnson",
     role: "Patient",
-    image: samplePhoto,
+    image: samplePhoto4,
     quote:
       "The AI-powered doctor recommendation feature helped me find the perfect specialist for my condition. The video consultation option saved me so much time and hassle.",
     rating: 5,
@@ -51,7 +55,7 @@ const testimonials = [
   {
     name: "Michael Chen",
     role: "Patient",
-    image: samplePhoto,
+    image: samplePhoto5,
     quote:
       "Excellent healthcare platform! The appointment booking process is smooth, and the electronic prescription system makes it easy to manage my medications.",
     rating: 5,
@@ -59,7 +63,7 @@ const testimonials = [
   {
     name: "Emily Rodriguez",
     role: "Patient",
-    image: samplePhoto,
+    image: samplePhoto2,
     quote:
       "As someone with a busy schedule, the flexibility of video consultations and online appointment booking has been a game-changer. Highly professional service!",
     rating: 5,
@@ -137,17 +141,17 @@ const Testimonials = () => {
                   key={index}
                   className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3"
                 >
-                  <Card className="bg-background relative h-full hover:shadow-lg transition-shadow duration-300">
-                    <CardContent className="p-8">
+                  <Card className="bg-background relative h-full hover:shadow-lg transition-shadow duration-300 flex flex-col">
+                    <CardContent className="p-8 flex flex-col flex-1">
                       <Quote
                         className="absolute top-4 left-4 text-primary opacity-20"
                         size={48}
                       />
-                      <div className="relative z-10">
-                        <p className="text-muted-foreground mb-6 leading-relaxed">
+                      <div className="relative z-10 flex flex-col flex-1 justify-between">
+                        <p className="text-muted-foreground mb-6 leading-relaxed flex-1">
                           {testimonial.quote}
                         </p>
-                        <div className="flex items-center">
+                        <div className="flex items-center mt-auto">
                           <Image
                             src={testimonial.image}
                             alt={testimonial.name}
