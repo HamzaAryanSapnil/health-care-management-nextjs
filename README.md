@@ -272,7 +272,7 @@ NODE_ENV=development
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd ph-health-care-main/ph-health-care-main
+   cd repo-folder
    ```
 
 2. **Install dependencies**
