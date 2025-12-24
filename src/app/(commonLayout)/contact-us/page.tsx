@@ -5,28 +5,34 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Mail,
-  Phone,
-  Linkedin,
-  ExternalLink,
-  Github,
-} from "lucide-react";
+import { Mail, Phone, ExternalLink } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import ContactForm from "@/components/modules/Contact/ContactForm";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import ProfileImage from "@/assets/images/profile.png";
 
 export const dynamic = "force-static";
 
 const ContactUsPage = () => {
   return (
-    <div className="container mx-auto px-4 py-12 space-y-12">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
       {/* Hero Section */}
-      <div className="text-center space-y-4 max-w-4xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-          Get In Touch
-        </h1>
-        <p className="text-xl text-muted-foreground">
-          Have questions or want to collaborate? I'd love to hear from you!
-        </p>
+      <div className="text-center space-y-6 max-w-4xl mx-auto">
+        <div className="flex justify-center">
+          <Avatar className="h-24 w-24 border-4 border-primary/20">
+            <AvatarImage src={ProfileImage.src} alt="Hamza Aryan Sapnil" />
+            <AvatarFallback className="text-2xl">HAS</AvatarFallback>
+          </Avatar>
+        </div>
+        <div className="space-y-4">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+            Get In Touch
+          </h1>
+          <p className="text-xl text-muted-foreground">
+            Have questions or want to collaborate? I&apos;d love to hear from
+            you!
+          </p>
+        </div>
       </div>
 
       <div className="grid gap-8 lg:grid-cols-2 max-w-6xl mx-auto">
@@ -94,7 +100,7 @@ const ContactUsPage = () => {
                   className="flex items-center gap-4 group"
                 >
                   <div className="p-3 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
-                    <Linkedin className="h-5 w-5 text-primary" />
+                    <FaLinkedin className="h-5 w-5 text-primary" />
                   </div>
                   <div className="flex-1">
                     <p className="font-semibold">LinkedIn</p>
@@ -140,7 +146,7 @@ const ContactUsPage = () => {
                   className="flex items-center gap-4 group"
                 >
                   <div className="p-3 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
-                    <Github className="h-5 w-5 text-primary" />
+                    <FaGithub className="h-5 w-5 text-primary" />
                   </div>
                   <div className="flex-1">
                     <p className="font-semibold">GitHub</p>
@@ -156,15 +162,15 @@ const ContactUsPage = () => {
         </div>
 
         {/* Contact Form */}
-        <Card className="transition-all duration-300 hover:shadow-lg">
+        <Card className="transition-all duration-300 hover:shadow-lg h-fit">
           <CardHeader>
             <CardTitle>Send a Message</CardTitle>
             <CardDescription>
-              Fill out the form below and I'll get back to you as soon as
+              Fill out the form below and I&apos;ll get back to you as soon as
               possible.
             </CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-0">
             <ContactForm />
           </CardContent>
         </Card>

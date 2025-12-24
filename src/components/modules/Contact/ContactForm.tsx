@@ -18,7 +18,7 @@ const ContactForm = () => {
   );
 
   return (
-    <form action={formAction} className="space-y-4">
+    <form action={formAction} className="space-y-3">
       {state?.success && (
         <Alert className="border-green-500 bg-green-50 text-green-900">
           <CheckCircle className="h-4 w-4" />
@@ -80,7 +80,7 @@ const ContactForm = () => {
           id="message"
           name="message"
           placeholder="Your message..."
-          rows={6}
+          rows={4}
           defaultValue={state?.formData?.message || ""}
           required
           disabled={isPending}

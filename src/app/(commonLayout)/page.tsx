@@ -1,4 +1,5 @@
 import { Hero } from "@/components/modules/Home/Hero";
+import AboutSection from "@/components/modules/Home/AboutSection";
 import Specialities from "@/components/modules/Home/Specialties";
 import Steps from "@/components/modules/Home/Steps";
 import Testimonials from "@/components/modules/Home/Testimonials";
@@ -19,6 +20,7 @@ export default function Home() {
       </Head>
       <main>
         <Hero />
+        <AboutSection />
         <Specialities />
         <TopRatedDoctors />
         <Steps />

@@ -7,14 +7,14 @@ import { contactFormSchema } from "@/zod/contact.validation";
 
 export async function sendContactMessage(_prevState: any, formData: FormData) {
   // Build validation payload
-  const validationPayload = { 
+  const validationPayload = {
     name: formData.get("name") as string,
     email: formData.get("email") as string,
     subject: formData.get("subject") as string,
     message: formData.get("message") as string,
   };
 
-  // Validate
+  // Frontend validation
   const validatedPayload = zodValidator(validationPayload, contactFormSchema);
 
   if (!validatedPayload.success && validatedPayload.errors) {
@@ -42,13 +42,44 @@ export async function sendContactMessage(_prevState: any, formData: FormData) {
 
     const result = await response.json();
 
-    if (!result.success) {
-      throw new Error(result.message || "Failed to send message");
+    // Handle backend validation errors
+    if (!result.success && result.error?.issues) {
+      // Convert backend error format to frontend format
+      const errors = result.error.issues.map((issue: any) => {
+        // Extract field name from path array (e.g., ["body", "email"] -> "email")
+        const fieldName = Array.isArray(issue.path)
+          ? issue.path[issue.path.length - 1]
+          : issue.path?.[0] || "";
+
+        return {
+          field: String(fieldName),
+          message: issue.message || "Validation error",
+        };
+      });
+
+      return {
+        success: false,
+        message: result.message || "Validation failed",
+        formData: validationPayload,
+        errors: errors,
+      };
     }
 
+    // Handle server errors (no issues array)
+    if (!result.success) {
+      return {
+        success: false,
+        message: result.message || "Failed to send message",
+        formData: validationPayload,
+      };
+    }
+
+    // Success response
     return {
       success: true,
-      message: "Message sent successfully! I'll get back to you soon.",
+      message:
+        result.message ||
+        "Message sent successfully! I'll get back to you soon.",
     };
   } catch (error: any) {
     return {

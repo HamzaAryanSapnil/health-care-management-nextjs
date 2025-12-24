@@ -11,7 +11,6 @@ import {
   Stethoscope,
   Calendar,
   FileText,
-  Shield,
   BarChart3,
   UserCog,
   Clock,
@@ -19,24 +18,23 @@ import {
   CreditCard,
   MessageSquare,
   Star,
-  CheckCircle2,
   Mail,
   Phone,
-  Linkedin,
   ExternalLink,
   Code,
   Database,
   Server,
   Zap,
-  Github,
 } from "lucide-react";
-import Link from "next/link";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import ProfileImage from "@/assets/images/profile.png";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 export const dynamic = "force-static";
 
 const AboutUsPage = () => {
   return (
-    <div className="container mx-auto px-4 py-12 space-y-16">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
       {/* Hero Section */}
       <div className="text-center space-y-4 max-w-4xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
@@ -62,9 +60,7 @@ const AboutUsPage = () => {
                 providers through innovative technology solutions.
               </p>
               <div className="space-y-3 mt-6">
-                <h3 className="text-xl font-semibold">
-                  Problems We Solve:
-                </h3>
+                <h3 className="text-xl font-semibold">Problems We Solve:</h3>
                 <ul className="space-y-2 list-disc list-inside text-muted-foreground">
                   <li>
                     <strong className="text-foreground">
@@ -98,8 +94,8 @@ const AboutUsPage = () => {
                     <strong className="text-foreground">
                       Payment Complexity:
                     </strong>{" "}
-                    Streamline payment processing with integrated Stripe
-                    payment gateway for seamless transactions
+                    Streamline payment processing with integrated Stripe payment
+                    gateway for seamless transactions
                   </li>
                   <li>
                     <strong className="text-foreground">
@@ -138,9 +134,9 @@ const AboutUsPage = () => {
               </p>
               <p>
                 The application leverages cutting-edge technologies including
-                Next.js App Router, React Server Actions, Zod validation,
-                Shadcn UI components, and integrates with external services like
-                Stripe for payments and AI services for intelligent doctor
+                Next.js App Router, React Server Actions, Zod validation, Shadcn
+                UI components, and integrates with external services like Stripe
+                for payments and AI services for intelligent doctor
                 recommendations.
               </p>
             </div>
@@ -194,8 +190,8 @@ const AboutUsPage = () => {
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  View and manage all appointments across the platform. Filter by
-                  status, view details, and update appointment statuses for
+                  View and manage all appointments across the platform. Filter
+                  by status, view details, and update appointment statuses for
                   complete oversight.
                 </CardDescription>
               </CardContent>
@@ -287,9 +283,9 @@ const AboutUsPage = () => {
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  Create digital prescriptions for patients. Include medications,
-                  dosages, and instructions. View prescription history and
-                  manage all prescriptions in one place.
+                  Create digital prescriptions for patients. Include
+                  medications, dosages, and instructions. View prescription
+                  history and manage all prescriptions in one place.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -505,7 +501,7 @@ const AboutUsPage = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-primary hover:underline font-medium group"
               >
-                <Github className="h-4 w-4" />
+                <FaGithub className="h-4 w-4" />
                 <span>View Repository</span>
                 <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </a>
@@ -536,7 +532,7 @@ const AboutUsPage = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-primary hover:underline font-medium group"
               >
-                <Github className="h-4 w-4" />
+                <FaGithub className="h-4 w-4" />
                 <span>View Repository</span>
                 <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </a>
@@ -548,7 +544,7 @@ const AboutUsPage = () => {
             <CardHeader>
               <div className="flex items-center gap-3">
                 <div className="p-3 bg-primary/10 rounded-full">
-                  <Github className="h-6 w-6 text-primary" />
+                  <FaGithub className="h-6 w-6 text-primary" />
                 </div>
                 <div>
                   <CardTitle>GitHub Profile</CardTitle>
@@ -567,7 +563,7 @@ const AboutUsPage = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-primary hover:underline font-medium group"
               >
-                <Github className="h-4 w-4" />
+                <FaGithub className="h-4 w-4" />
                 <span>View Profile</span>
                 <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </a>
@@ -583,10 +579,14 @@ const AboutUsPage = () => {
           {/* Contact Card */}
           <Card className="border-primary/20 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
             <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-full">
-                  <Users className="h-6 w-6 text-primary" />
-                </div>
+              <div className="flex items-center gap-4">
+                <Avatar className="h-16 w-16 border-2 border-primary/20">
+                  <AvatarImage
+                    src={ProfileImage.src}
+                    alt="Hamza Aryan Sapnil"
+                  />
+                  <AvatarFallback className="text-lg">HAS</AvatarFallback>
+                </Avatar>
                 <div>
                   <CardTitle>Hamza Aryan Sapnil</CardTitle>
                   <CardDescription>Full-Stack Web Developer</CardDescription>
@@ -617,7 +617,7 @@ const AboutUsPage = () => {
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors group"
                 >
-                  <Linkedin className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                  <FaLinkedin className="h-5 w-5 group-hover:scale-110 transition-transform" />
                   <span>LinkedIn Profile</span>
                   <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </a>
@@ -627,7 +627,7 @@ const AboutUsPage = () => {
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors group"
                 >
-                  <Github className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                  <FaGithub className="h-5 w-5 group-hover:scale-110 transition-transform" />
                   <span>GitHub Profile</span>
                   <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </a>
@@ -648,17 +648,17 @@ const AboutUsPage = () => {
                 </div>
               </div>
             </CardHeader>
-            <CardContent>
+            <CardContent className="space-y-4">
               <a
                 href="https://nextjs-portfolio-delta-three.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-primary hover:underline font-medium group"
+                className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors group font-medium"
               >
                 <span>Visit Portfolio Website</span>
                 <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </a>
-              <p className="text-sm text-muted-foreground mt-4">
+              <p className="text-sm text-muted-foreground">
                 Explore my portfolio to see more projects, skills, and
                 experience in full-stack web development.
               </p>
@@ -671,4 +671,3 @@ const AboutUsPage = () => {
 };
 
 export default AboutUsPage;
-

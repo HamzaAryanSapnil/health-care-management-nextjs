@@ -22,7 +22,7 @@ const MobileMenu = ({
   dashboardRoute,
 }: MobileMenuProps) => {
   return (
-    <div className="md:hidden">
+    <div className="block xl:hidden">
       <Sheet>
         <SheetTrigger asChild>
           <Button variant="outline">

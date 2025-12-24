@@ -1,79 +1,113 @@
-import { Star } from 'lucide-react';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import cardioDoc from '../../../assets/images/doctor-cardiologist.jpg';
-import neurolDoc from '../../../assets/images/doctor-neurologist.jpg';
-import orthoDoc from '../../../assets/images/doctor-orthopedic.jpg';
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { CheckCircle2, ArrowRight } from "lucide-react";
+import { getDoctors } from "@/services/admin/doctorManagement";
+import { IDoctor } from "@/types/doctor.interface";
+import TopRatedDoctorCard from "./TopRatedDoctorCard";
 
-const doctors = [
-  {
-    name: 'Dr. Cameron Williamson',
-    specialty: 'Cardiologist',
-    rating: 4.9,
-    reviews: 23,
-    image: cardioDoc,
-  },
-  {
-    name: 'Dr. Leslie Alexander',
-    specialty: 'Neurologist',
-    rating: 4.8,
-    reviews: 45,
-    image: neurolDoc,       
-  },
-  {
-    name: 'Dr. Robert Fox',
-    specialty: 'Orthopedic',
-    rating: 4.9,
-    reviews: 32,
-    image: orthoDoc,
-  },
-];
+// Revalidate every 10 minutes
+export const revalidate = 600;
 
-const DoctorCard = ({ doctor }: { doctor: typeof doctors[0] }) => {
-    return (
-        <Card className="text-center overflow-hidden hover:shadow-xl transition-shadow duration-300 p-0 m-0 max-w-96">
-            <CardHeader className="bg-blue-50/50 items-center p-0 m-0 min-h-64" style={{ backgroundImage: `url(${doctor.image.src})`, backgroundSize: 'cover', backgroundPosition: 'top' }}>
-                
-            </CardHeader>
-            <CardContent className="">
-                <CardTitle className="text-lg text-start">{doctor.name}</CardTitle>
-                <p className="text-primary font-medium mt-1 text-start">{doctor.specialty}</p>
-                <div className="flex items-center justify-start  text-sm">
-                    <Star className="text-yellow-400 fill-current" size={16} />
-                    <span className="ml-2 text-foreground font-semibold">{doctor.rating}</span>
-                    <span className="ml-2 text-muted-foreground">({doctor.reviews} reviews)</span>
-                </div>
-            </CardContent>
-             <CardFooter className="grid grid-cols-2 gap-2 p-4 pt-0">
-                <Button variant="outline">View Profile</Button>
-                <Button>Book Now</Button>
-            </CardFooter>
-        </Card>
-    )
-}
+const TopRatedDoctors = async () => {
+  // Fetch top rated doctors (limit 4, sorted by rating)
+  const doctorsResponse = await getDoctors("page=1&limit=4");
+  const doctors = doctorsResponse?.data || [];
 
-const TopRatedDoctors = () => {
+  // Filter out deleted doctors and sort by averageRating (highest first), take top 4
+  const topRatedDoctors = (doctors as IDoctor[])
+    .filter((doctor) => !doctor.isDeleted)
+    .sort((a, b) => {
+      // Sort by rating: doctors with ratings first (highest first), then doctors without ratings
+      const ratingA = a.averageRating || 0;
+      const ratingB = b.averageRating || 0;
+      if (ratingA === 0 && ratingB === 0) return 0; // Both have no rating, maintain order
+      if (ratingA === 0) return 1; // A has no rating, put it last
+      if (ratingB === 0) return -1; // B has no rating, put it last
+      return ratingB - ratingA; // Both have ratings, sort descending
+    })
+    .slice(0, 4);
+
   return (
-    <section className="bg-linear-to-br from-blue-50 to-blue-100/50 py-24">
+    <section className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto">
-          <h2 className="text-3xl font-bold text-foreground">
-            Our Top Rated Doctor
-          </h2>
-          <p className="text-muted-foreground mt-4">
-            Access to medical experts from various specialities, ready to
-            provide you with top-notch medical services.
-          </p>
-        </div>
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Left Section - Text Content */}
+          <div className="space-y-6">
+            {/* Small Heading */}
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-primary rounded-full"></div>
+              <p className="text-sm font-medium text-primary uppercase tracking-wide">
+                Healthcare Professionals
+              </p>
+            </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-          {doctors.map((doctor) => (
-            <DoctorCard key={doctor.name} doctor={doctor} />
-          ))}
-        </div>
+            {/* Main Heading */}
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
+              Fully Dedicated to Your Health & Wellness
+            </h2>
 
-        <div className="text-center mt-12">
-          <Button size="lg">View All Doctors</Button>
+            {/* Body Text */}
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+              We provide access to highly qualified medical experts across
+              various specialties. Our doctors are committed to delivering
+              exceptional healthcare services with personalized care and
+              attention.
+            </p>
+
+            {/* Feature Lists */}
+            <div className="grid sm:grid-cols-2 gap-4 pt-4">
+              <div className="flex items-start gap-3 group/item">
+                <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0 group-hover/item:scale-110 transition-transform duration-300" />
+                <p className="text-sm text-muted-foreground group-hover/item:text-foreground transition-colors">
+                  Routine and preventive care
+                </p>
+              </div>
+              <div className="flex items-start gap-3 group/item">
+                <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0 group-hover/item:scale-110 transition-transform duration-300" />
+                <p className="text-sm text-muted-foreground group-hover/item:text-foreground transition-colors">
+                  Excellence in healthcare delivery
+                </p>
+              </div>
+              <div className="flex items-start gap-3 group/item">
+                <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0 group-hover/item:scale-110 transition-transform duration-300" />
+                <p className="text-sm text-muted-foreground group-hover/item:text-foreground transition-colors">
+                  Building a healthy environment
+                </p>
+              </div>
+              <div className="flex items-start gap-3 group/item">
+                <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0 group-hover/item:scale-110 transition-transform duration-300" />
+                <p className="text-sm text-muted-foreground group-hover/item:text-foreground transition-colors">
+                  Comprehensive medical solutions
+                </p>
+              </div>
+            </div>
+
+            {/* CTA Button */}
+            <div className="pt-4">
+              <Link href="/consultation">
+                <Button
+                  size="lg"
+                  className="group/btn hover:shadow-lg transition-all duration-300"
+                >
+                  View All Doctors
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+
+          {/* Right Section - Doctor Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+            {topRatedDoctors.length > 0 ? (
+              topRatedDoctors.map((doctor) => (
+                <TopRatedDoctorCard key={doctor.id} doctor={doctor} />
+              ))
+            ) : (
+              <div className="col-span-2 text-center py-12 text-muted-foreground">
+                <p>No doctors available at the moment.</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </section>
