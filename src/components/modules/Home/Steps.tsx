@@ -14,20 +14,20 @@ const steps = [
 ];
 
 const StepCard = ({ icon: Icon, title, description, index }: { icon: React.ElementType, title: string, description: string, index: number }) => {
-    const bgColors = [
-        'bg-blue-50', 'bg-pink-50', 'bg-green-50', 'bg-yellow-50',
-        'bg-pink-50', 'bg-blue-50', 'bg-yellow-50', 'bg-green-50'
-    ];
-    const textColors = [
-        'text-blue-500', 'text-pink-500', 'text-green-500', 'text-yellow-500',
-        'text-pink-500', 'text-blue-500', 'text-yellow-500', 'text-green-500'
-    ];
+    // const bgColors = [
+    //     'bg-blue-50', 'bg-pink-50', 'bg-green-50', 'bg-yellow-50',
+    //     'bg-pink-50', 'bg-blue-50', 'bg-yellow-50', 'bg-green-50'
+    // ];
+    // const textColors = [
+    //     'text-blue-500', 'text-pink-500', 'text-green-500', 'text-yellow-500',
+    //     'text-pink-500', 'text-blue-500', 'text-yellow-500', 'text-green-500'
+    // ];
 
     return (
-        <Card className={`${bgColors[index % 8]}`}>
+        <Card className="bg-linear-to-br from-blue-50 to-blue-100/50">
             <CardContent className="p-4">
                  <div className="flex items-center space-x-4">
-                    <div className={`p-3 rounded-full ${textColors[index % 8]} bg-white shadow-sm`}>
+                    <div className="p-3 rounded-full text-primary bg-white shadow-sm">
                         <Icon size={24} />
                     </div>
                     <div>

@@ -36,7 +36,7 @@ export function ServiceCard({
       </div>
 
       {/* Content Section - Bottom with white background */}
-      <CardContent className="bg-card p-4 flex-1 flex flex-col justify-center">
+      <CardContent className="bg-card p-4 flex-1 flex flex-col justify-start ">
         <h3 className="font-semibold text-card-foreground mb-2">{title}</h3>
         <p className="text-sm text-muted-foreground">{description}</p>
       </CardContent>

@@ -11,6 +11,7 @@ import DoctorCheckingPatientImg from '@/assets/images/doctor-checking.jpg'
 import AIDoctorSuggestionsImg from '@/assets/images/ai-suggestions.jpg'
 import CustomerServiceImg from '@/assets/images/customer-service.jpg'
 import PaymentServiceImg from '@/assets/images/payment.jpg'
+import HeroBgImg from '@/assets/images/hero-bg.png'
 
 export function Hero({
   heading = "Book a Doctor's Appointment in Just 10 Minutes with Sasthya Seba",
@@ -71,30 +72,46 @@ export function Hero({
   };
 
   return (
-    <div className="w-full relative bg-blue-50">
+    <div
+      className="w-full relative bg-blue-50 "
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${HeroBgImg.src})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       {/* Content Container */}
-      <div className="w-full px-4 py-12 md:px-8 lg:px-16 relative">
-        <div className="mx-auto max-w-[1200px]">
+      <div className="w-full  px-4 py-12 md:px-8 lg:px-16 relative">
+        <div className="container mx-auto px-4 py-12 md:px-8 ">
           {/* Section 1: Top Section - Heading, Description, and AI Search Form */}
-          <div className="flex flex-col items-center space-y-8 mb-16">
+          <div className="flex flex-col md:flex-row md:items-start items-center gap-x-6 space-y-8 mb-16 ">
             {/* Heading */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-foreground max-w-4xl leading-tight">
-              {heading}
-            </h1>
+            <div className="space-y-4">
+              <h4 className="text-white/70 text-3xl tracking-widest font-bold font-sue-ellen-francisco">
+                {" "}
+                Health-Care-Service-With-AI
+              </h4>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-start text-white max-w-4xl leading-tight">
+                {heading}
+              </h1>
 
-            {/* Description */}
-            <p className="text-base md:text-lg text-center text-muted-foreground max-w-3xl">
-              {description}
-            </p>
+              {/* Description */}
+              <p className="text-base md:text-lg text-start text-white/70 max-w-3xl">
+                {description}
+              </p>
+            </div>
 
             {/* AI Search Form Card - Centered */}
-            <div className="w-full max-w-7xl rounded-2xl bg-white p-8 shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)]">
+            <div className="w-full max-w-2xl rounded-2xl bg-white p-8 shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)]">
               {/* Card Header */}
               <div className="mb-6 flex items-center justify-between">
                 <h2 className="text-[20.4px] leading-6 font-semibold">
                   {formCard.title}
                 </h2>
-                <LargeSparkleIcon />
+                {/* Remove className prop, as LargeSparkleIcon does not accept it */}
+                <span className="size-6 text-primary">
+                  <LargeSparkleIcon />
+                </span>
               </div>
 
               {/* Form */}
@@ -118,7 +135,7 @@ export function Hero({
                 {/* Submit Button */}
                 <Button
                   type="submit"
-                  className="h-[59.986px] w-full rounded-xl bg-blue-600 text-[15.3px] hover:bg-blue-700"
+                  className="h-[59.986px] w-full rounded-xl bg-primary text-[15.3px] hover:bg-primary/90"
                 >
                   {formCard.submitText}
                 </Button>
