@@ -599,7 +599,7 @@ const AboutUsPage = () => {
                   href="mailto:hamzaswapnil@gmail.com"
                   className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors group"
                 >
-                  <Mail className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                  <Mail className="h-5 w-5 group-hover:scale-110 transition-transform group-hover:text-[#4285F4]" />
                   <span>hamzaswapnil@gmail.com</span>
                 </a>
                 <a
@@ -608,7 +608,7 @@ const AboutUsPage = () => {
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors group"
                 >
-                  <Phone className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                  <Phone className="h-5 w-5 group-hover:scale-110 transition-transform group-hover:text-[#25D366]" />
                   <span>+880 1303 539 006</span>
                 </a>
                 <a
@@ -617,7 +617,7 @@ const AboutUsPage = () => {
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors group"
                 >
-                  <FaLinkedin className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                  <FaLinkedin className="h-5 w-5 group-hover:scale-110 transition-transform group-hover:text-[#0077B5]" />
                   <span>LinkedIn Profile</span>
                   <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </a>
@@ -627,7 +627,7 @@ const AboutUsPage = () => {
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors group"
                 >
-                  <FaGithub className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                  <FaGithub className="h-5 w-5 group-hover:scale-110 transition-transform group-hover:text-[#181717]" />
                   <span>GitHub Profile</span>
                   <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </a>

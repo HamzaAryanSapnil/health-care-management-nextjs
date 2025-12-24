@@ -54,8 +54,8 @@ const ContactUsPage = () => {
                   href="mailto:hamzaswapnil@gmail.com"
                   className="flex items-center gap-4 group"
                 >
-                  <div className="p-3 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
-                    <Mail className="h-5 w-5 text-primary" />
+                  <div className="p-3 bg-primary/10 rounded-full group-hover:bg-[#4285F4]/20 transition-colors">
+                    <Mail className="h-5 w-5 text-primary group-hover:text-[#4285F4] transition-colors" />
                   </div>
                   <div className="flex-1">
                     <p className="font-semibold">Email</p>
@@ -76,8 +76,8 @@ const ContactUsPage = () => {
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 group"
                 >
-                  <div className="p-3 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
-                    <Phone className="h-5 w-5 text-primary" />
+                  <div className="p-3 bg-primary/10 rounded-full group-hover:bg-[#25D366]/20 transition-colors">
+                    <Phone className="h-5 w-5 text-primary group-hover:text-[#25D366] transition-colors" />
                   </div>
                   <div className="flex-1">
                     <p className="font-semibold">WhatsApp</p>
@@ -99,8 +99,8 @@ const ContactUsPage = () => {
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 group"
                 >
-                  <div className="p-3 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
-                    <FaLinkedin className="h-5 w-5 text-primary" />
+                  <div className="p-3 bg-primary/10 rounded-full group-hover:bg-[#0077B5]/20 transition-colors">
+                    <FaLinkedin className="h-5 w-5 text-primary group-hover:text-[#0077B5] transition-colors" />
                   </div>
                   <div className="flex-1">
                     <p className="font-semibold">LinkedIn</p>
@@ -145,8 +145,8 @@ const ContactUsPage = () => {
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 group"
                 >
-                  <div className="p-3 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
-                    <FaGithub className="h-5 w-5 text-primary" />
+                  <div className="p-3 bg-primary/10 rounded-full group-hover:bg-[#181717]/20 transition-colors">
+                    <FaGithub className="h-5 w-5 text-primary group-hover:text-[#181717] transition-colors" />
                   </div>
                   <div className="flex-1">
                     <p className="font-semibold">GitHub</p>
